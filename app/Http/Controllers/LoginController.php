@@ -14,14 +14,19 @@ class LoginController
         return view("auth.login");
     }
     public function auth(Request $request){
-        //dd(Hash::make("iitu1995"));
-        $user = User::where('email', $request->email)
-            ->where('visible_password', $request->password)
-            ->where('type', 'user')
-            ->get()
-            ->first();
-        Auth::login($user);
-        return redirect()->route('dashboard.index');
+
+        if(!is_null($request->email) && !is_null($request->password)){
+            $user = User::where('email', $request->email)
+                ->where('visible_password', $request->password)
+                ->where('type', 'user')
+                ->get()
+                ->first();
+            Auth::login($user);
+            return redirect()->route('dashboard.index');
+        }else{
+            return redirect()->route('login');
+        }
+
     }
     public function logout(){
         Auth::logout();

@@ -30,13 +30,18 @@ return new class extends Migration
 
             $table->text("cargo_details")->nullable(); // Характеристика груза
             $table->integer("counterparty")->nullable(); // Контрагент
+            $table->integer("company_type")->nullable(); // Юр. лицо / Физ. лицо
+            $table->integer("user_id")->nullable(); // Кто создал заявку
             $table->integer("is_package")->nullable(); // Упаковка да/нет
-            $table->integer("need_movers")->nullable(); // Грузчики Забор/Доставке
+            $table->integer("need_movers")->nullable(); // Грузчики Забор/Доставке / 0-Для забора 1-Для доставки 3-Обе
             $table->float("mass")->default(0.0)->nullable(); // Вес
             $table->float("volume")->default(0.0)->nullable(); // Объем
             $table->float("price")->default(0.0)->nullable(); // Цена
             $table->text("comment")->nullable();
             $table->text("description")->nullable();
+
+            $table->timestamp("order_start_date");
+            $table->timestamp("order_end_date");
             $table->timestamps();
         });
     }

@@ -9,4 +9,8 @@ class UserController extends Controller
     public function profile(Request $request){
         dd($request);
     }
+    public function create(){
+
+        return "";
+    }
 }

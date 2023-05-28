@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,13 @@ Route::middleware('auth')->group(function (){
     /** ================= Dashboard =====================*/
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
-
     /** ================= USER (Пользователь) =====================*/
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('/create', [UserController::class, 'create'])->name('user.create');
+
+    /** =================  Order (Заявки, Накладные) =====================*/
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
 
 });
 

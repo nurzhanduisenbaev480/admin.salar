@@ -52,6 +52,14 @@
                         <span class="menu-title">Панель управления</span>
                     </a>
                 </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="{{route('order.index')}}">
+                        <span class="menu-icon">
+                            @include('includes.svg_icons.order_icon')
+                        </span>
+                        <span class="menu-title">Заявки</span>
+                    </a>
+                </div>
 
             </div>
             <!--end::Menu-->
