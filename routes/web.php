@@ -16,14 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::middleware('auth')->group(function (){
-    /** ================= Auth =====================*/
+
+    /** ================= Dashboard =====================*/
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
 
     /** ================= USER (Пользователь) =====================*/
-    Route::get('/', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
 
 });
 
